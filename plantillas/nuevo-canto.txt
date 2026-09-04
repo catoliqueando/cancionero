@@ -4,6 +4,8 @@ AUTOR:
 COMPOSITOR:
 ANO:
 TONO:
+YOUTUBE:
+AUDIO:
 OBSERVACIONES:
 MOMENTO:
 
@@ -11,3 +13,6 @@ LETRA:
 Pega aquí la letra completa del canto.
 
 Cada salto de línea y cada estrofa se conservarán.
+
+Para agregar acordes, colócalos justo antes de la sílaba donde cambian:
+[C]La misa es una [F]fiesta muy a[C]legre.

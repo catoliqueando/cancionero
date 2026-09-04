@@ -34,6 +34,67 @@ function cantosDeMisa(){
     .filter(entrada => entrada.canto);
 }
 
+function extraerYoutubeId(valor=""){
+  try{
+    const url = new URL(valor);
+    const host = url.hostname.replace(/^www\./, "").toLowerCase();
+    let id = "";
+    if(host === "youtu.be") id = url.pathname.split("/").filter(Boolean)[0] || "";
+    if(host === "youtube.com" || host === "m.youtube.com"){
+      id = url.searchParams.get("v") || "";
+      if(!id && /^\/(embed|shorts)\//.test(url.pathname)) id = url.pathname.split("/")[2] || "";
+    }
+    return /^[A-Za-z0-9_-]{11}$/.test(id) ? id : "";
+  }catch(_error){
+    return "";
+  }
+}
+
+function urlAudioSegura(valor=""){
+  if(/^https:\/\/[^\s<>"']+$/i.test(valor)) return valor;
+  if(/^assets\/audio\/[A-Za-z0-9._/-]+$/i.test(valor) && !valor.includes("..")) return valor;
+  return "";
+}
+
+const NOTAS = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
+const INDICES_NOTAS = { C:0, "C#":1, Db:1, D:2, "D#":3, Eb:3, E:4, F:5, "F#":6, Gb:6, G:7, "G#":8, Ab:8, A:9, "A#":10, Bb:10, B:11 };
+
+function transponerParte(parte, pasos){
+  const coincidencia = parte.match(/^([A-G](?:#|b)?)(.*)$/);
+  if(!coincidencia || INDICES_NOTAS[coincidencia[1]] === undefined) return parte;
+  const indice = (INDICES_NOTAS[coincidencia[1]] + pasos + 120) % 12;
+  return `${NOTAS[indice]}${coincidencia[2]}`;
+}
+
+function transponerAcorde(acorde, pasos){
+  const [principal, bajo, ...resto] = acorde.split("/");
+  const acordeTranspuesto = transponerParte(principal, pasos);
+  if(!bajo) return acordeTranspuesto;
+  return `${acordeTranspuesto}/${transponerParte(bajo, pasos)}${resto.length ? `/${resto.join("/")}` : ""}`;
+}
+
+function renderizarLetraConAcordes(texto){
+  return texto.split("\n").map(linea => {
+    if(!linea) return `<div class="chord-line is-empty" aria-hidden="true">&nbsp;</div>`;
+
+    const segmentos = [];
+    const patron = /\[([^\]\r\n]+)\]/g;
+    let acordePendiente = "";
+    let ultimoIndice = 0;
+    let coincidencia;
+
+    while((coincidencia = patron.exec(linea))){
+      const textoAnterior = linea.slice(ultimoIndice, coincidencia.index);
+      if(textoAnterior || acordePendiente) segmentos.push({ acorde: acordePendiente, texto: textoAnterior });
+      acordePendiente = coincidencia[1];
+      ultimoIndice = patron.lastIndex;
+    }
+    segmentos.push({ acorde: acordePendiente, texto: linea.slice(ultimoIndice) });
+
+    return `<div class="chord-line">${segmentos.map(segmento => `<span class="chord-segment"><span class="chord-name" data-chord="${esc(segmento.acorde)}" aria-hidden="true">${esc(segmento.acorde)}</span><span class="chord-text">${esc(segmento.texto) || "&nbsp;"}</span></span>`).join("")}</div>`;
+  }).join("");
+}
+
 function home(){
   return `
     <section class="hero-card home-hero" aria-labelledby="home-title">
@@ -161,6 +222,8 @@ function canto(id, indiceMisa=null){
   const anterior = enMisa ? seleccion[posicion - 1] : null;
   const siguiente = enMisa ? seleccion[posicion + 1] : null;
   const momento = enMisa ? seleccion[posicion].item.momento : "";
+  const youtubeId = extraerYoutubeId(c.youtube);
+  const audio = urlAudioSegura(c.audio);
 
   return `
     <a class="back" href="${enMisa ? "#/misa" : "javascript:history.back()"}">← ${enMisa ? "Lista de la Misa" : "Volver"}</a>
@@ -183,11 +246,37 @@ function canto(id, indiceMisa=null){
       </div>
       ${c.observaciones ? `<p class="song-note">${esc(c.observaciones)}</p>` : ""}
     </div>
-    <div class="lyrics-controls" role="group" aria-label="Tamaño de la letra">
-      <button class="small-btn" id="minusFont" aria-label="Reducir letra">A−</button>
-      <button class="small-btn" id="plusFont" aria-label="Aumentar letra">A+</button>
+    <div class="song-toolbar">
+      <div class="media-actions">
+        ${c.letraAcordes ? `<button class="tool-btn" id="toggleChords" type="button" aria-pressed="false"><span aria-hidden="true">🎸</span> Ver acordes</button>` : ""}
+        ${youtubeId ? `<button class="tool-btn" id="toggleYoutube" type="button" aria-expanded="false"><span aria-hidden="true">▶</span> Ver video</button>` : ""}
+      </div>
+      <div class="lyrics-controls" role="group" aria-label="Tamaño de la letra">
+        <button class="small-btn" id="minusFont" aria-label="Reducir letra">A−</button>
+        <button class="small-btn" id="plusFont" aria-label="Aumentar letra">A+</button>
+      </div>
     </div>
-    <article class="lyrics" id="lyrics">${esc(c.letra)}</article>
+    ${c.letraAcordes ? `
+      <div class="transpose-controls" id="transposeControls" hidden>
+        <span>Transportar acordes</span>
+        <button class="small-btn" id="transposeDown" type="button" aria-label="Bajar medio tono">−</button>
+        <strong id="transposeLabel">Tono: ${esc(c.tono || "original")}</strong>
+        <button class="small-btn" id="transposeUp" type="button" aria-label="Subir medio tono">＋</button>
+      </div>
+    ` : ""}
+    ${youtubeId ? `
+      <div class="media-panel youtube-panel" id="youtubePlayer" data-youtube-id="${youtubeId}" hidden>
+        <div class="video-slot"></div>
+        <a href="https://www.youtube.com/watch?v=${youtubeId}" target="_blank" rel="noopener">Abrir este canto en YouTube ↗</a>
+      </div>
+    ` : ""}
+    ${audio ? `
+      <div class="media-panel audio-panel">
+        <strong>Audio MP3</strong>
+        <audio controls preload="none" src="${esc(audio)}">Tu navegador no puede reproducir este audio.</audio>
+      </div>
+    ` : ""}
+    <article class="lyrics" id="lyrics" data-song-id="${esc(c.id)}">${esc(c.letra)}</article>
     ${enMisa ? `
       <nav class="song-pager" aria-label="Navegación entre cantos de la Misa">
         ${enlaceMisa(anterior, `<span aria-hidden="true">←</span><span><small>Anterior</small>${anterior ? esc(anterior.canto.titulo) : ""}</span>`, "is-previous")}
@@ -234,6 +323,7 @@ function bind(){
 
   const lyrics = $("#lyrics");
   if(lyrics){
+    const cantoActual = songById(lyrics.dataset.songId);
     let size = Number(localStorage.getItem("lyricsFontSize") || 1.22);
     lyrics.style.fontSize = size + "rem";
     $("#plusFont")?.addEventListener("click", () => {
@@ -246,6 +336,60 @@ function bind(){
       lyrics.style.fontSize = size + "rem";
       localStorage.setItem("lyricsFontSize", size);
     });
+
+    const toggleChords = $("#toggleChords");
+    const transposeControls = $("#transposeControls");
+    if(toggleChords && cantoActual?.letraAcordes){
+      let acordesVisibles = false;
+      let semitonos = 0;
+
+      const actualizarTransposicion = () => {
+        document.querySelectorAll("[data-chord]").forEach(elemento => {
+          elemento.textContent = transponerAcorde(elemento.dataset.chord, semitonos);
+        });
+        const tono = cantoActual.tono ? transponerAcorde(cantoActual.tono, semitonos) : `original ${semitonos >= 0 ? "+" : ""}${semitonos}`;
+        $("#transposeLabel").textContent = `Tono: ${tono}`;
+        $("#transposeDown").disabled = semitonos <= -11;
+        $("#transposeUp").disabled = semitonos >= 11;
+      };
+
+      toggleChords.addEventListener("click", () => {
+        acordesVisibles = !acordesVisibles;
+        toggleChords.setAttribute("aria-pressed", String(acordesVisibles));
+        toggleChords.innerHTML = acordesVisibles ? `<span aria-hidden="true">🎸</span> Ocultar acordes` : `<span aria-hidden="true">🎸</span> Ver acordes`;
+        transposeControls.hidden = !acordesVisibles;
+        lyrics.classList.toggle("with-chords", acordesVisibles);
+        if(acordesVisibles){
+          lyrics.innerHTML = renderizarLetraConAcordes(cantoActual.letraAcordes);
+          actualizarTransposicion();
+        }else{
+          lyrics.textContent = cantoActual.letra;
+        }
+      });
+
+      $("#transposeDown").addEventListener("click", () => {
+        semitonos = Math.max(-11, semitonos - 1);
+        actualizarTransposicion();
+      });
+      $("#transposeUp").addEventListener("click", () => {
+        semitonos = Math.min(11, semitonos + 1);
+        actualizarTransposicion();
+      });
+    }
+
+    const toggleYoutube = $("#toggleYoutube");
+    const youtubePlayer = $("#youtubePlayer");
+    if(toggleYoutube && youtubePlayer){
+      toggleYoutube.addEventListener("click", () => {
+        const abrir = youtubePlayer.hidden;
+        youtubePlayer.hidden = !abrir;
+        toggleYoutube.setAttribute("aria-expanded", String(abrir));
+        toggleYoutube.innerHTML = abrir ? `<span aria-hidden="true">▶</span> Ocultar video` : `<span aria-hidden="true">▶</span> Ver video`;
+        const espacio = youtubePlayer.querySelector(".video-slot");
+        espacio.innerHTML = abrir ? `<iframe src="https://www.youtube-nocookie.com/embed/${youtubePlayer.dataset.youtubeId}?rel=0" title="Video de ${esc(cantoActual?.titulo || "este canto")}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>` : "";
+        if(abrir) youtubePlayer.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      });
+    }
   }
 }
 

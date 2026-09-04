@@ -23,6 +23,8 @@ AUTOR:
 COMPOSITOR:
 ANO:
 TONO:
+YOUTUBE:
+AUDIO:
 OBSERVACIONES:
 MOMENTO:
 
@@ -31,6 +33,24 @@ Aquí va el texto autorizado del canto.
 
 Las estrofas pueden separarse con una línea vacía.
 ```
+
+## Agregar acordes, YouTube o MP3
+
+Todos estos datos son opcionales. Para colocar acordes, escríbelos dentro de la
+letra justo antes de la sílaba donde deben aparecer:
+
+```text
+[C]La misa es una [F]fiesta muy a[C]legre,
+[C]la misa es una [G]fiesta con Je[C]sús.
+```
+
+El canto se abrirá inicialmente sin acordes. El botón **Ver acordes** los muestra
+y habilita los controles para subir o bajar el tono.
+
+En `YOUTUBE` coloca el enlace completo del video. El reproductor solamente se
+carga cuando el usuario pulsa **Ver video**. En `AUDIO` puedes colocar una URL
+directa `https` a un MP3 o una ruta como `assets/audio/grabacion.mp3` si el archivo
+está guardado dentro del repositorio.
 
 El nombre del archivo se convierte automáticamente en el ID del canto.
 Por ejemplo, `canto-de-ejemplo.txt` genera el ID `canto-de-ejemplo`.

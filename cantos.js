@@ -64,6 +64,17 @@ const CANTOS = [
     "letra": "Tanto amó Dios al mundo\nque a su único hijo, él entregó\nPara que todo aquel que crea en Él\nno muera mas tenga vida eterna\n\nJesús está vivo\nJesús está vivo\nEs el pan de vida, bajado del Cielo\nJesús está vivo\nJesús está vivo\nSu sangre me sana, y sacia mi alma\nEstá vivo, está presente, mi Dios es real\ny yo le adoro reverente"
   },
   {
+    "id": "la-misa-es-una-fiesta",
+    "titulo": "La misa es una fiesta",
+    "categoria": "Entrada",
+    "autor": "Cesáreo Gabaráin",
+    "tono": "C",
+    "youtube": "https://www.youtube.com/watch?v=6MaA56G3QW8",
+    "momento": "Entrada",
+    "letra": "La misa es una fiesta muy alegre,\nla misa es una fiesta con Jesús (bis)\n\nCada domingo celebramos\nque nuestro amigo nos salvó,\nque por amor nos dio su vida y Resucitó.\n\nCon su palabra nos enseña,\nnos alimenta con su pan,\nnos compromete a ser amigos\ny a caminar.",
+    "letraAcordes": "[C]La misa es una [F]fiesta muy a[C]legre,\n[C]la misa es una [G]fiesta con Je[C]sús (bis)\n\nCada [F]domingo cele[G]bramos\nque nuestro a[C]migo nos sal[Am]vó,\nque por a[F]mor nos dio su [G]vida y Resu[C]citó.[C7]\n\nCon su [F]palabra nos en[G]seña,\nnos ali[C]menta con su [Am]pan,\nnos compro[F]mete a ser a[G]migos\ny a [C]cami[C7]nar."
+  },
+  {
     "id": "madre-buena",
     "titulo": "Madre Buena",
     "categoria": "Marianos",

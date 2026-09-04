@@ -13,6 +13,8 @@ const CAMPOS = new Map([
   ["COMPOSITOR", "compositor"],
   ["ANO", "anio"],
   ["TONO", "tono"],
+  ["YOUTUBE", "youtube"],
+  ["AUDIO", "audio"],
   ["OBSERVACIONES", "observaciones"],
   ["MOMENTO", "momento"]
 ]);
@@ -32,6 +34,31 @@ function crearId(nombreArchivo) {
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
+}
+
+function obtenerYoutubeId(valor) {
+  if (!valor) return "";
+  try {
+    const url = new URL(valor);
+    const host = url.hostname.replace(/^www\./, "").toLowerCase();
+    let id = "";
+
+    if (host === "youtu.be") id = url.pathname.split("/").filter(Boolean)[0] || "";
+    if (host === "youtube.com" || host === "m.youtube.com") {
+      id = url.searchParams.get("v") || "";
+      if (!id && /^\/(embed|shorts)\//.test(url.pathname)) id = url.pathname.split("/")[2] || "";
+    }
+
+    return /^[A-Za-z0-9_-]{11}$/.test(id) ? id : "";
+  } catch (_error) {
+    return "";
+  }
+}
+
+function audioValido(valor) {
+  if (!valor) return true;
+  if (/^https:\/\/[^\s<>"']+$/i.test(valor)) return true;
+  return /^assets\/audio\/[A-Za-z0-9._/-]+$/i.test(valor) && !valor.includes("..");
 }
 
 function leerCanto(nombreArchivo) {
@@ -54,12 +81,20 @@ function leerCanto(nombreArchivo) {
   }
 
   const letra = lineas.slice(indiceLetra + 1).join("\n").trim();
+  const tieneAcordes = /\[[^\]\r\n]+\]/.test(letra);
+  const letraSinAcordes = letra.replace(/\[[^\]\r\n]+\]/g, "").trim();
   const id = crearId(nombreArchivo);
 
   if (!id) throw new Error(`${nombreArchivo}: el nombre del archivo no permite crear un ID.`);
   if (!datos.titulo) throw new Error(`${nombreArchivo}: falta TITULO.`);
   if (!datos.categoria) throw new Error(`${nombreArchivo}: falta CATEGORIA.`);
-  if (!letra) throw new Error(`${nombreArchivo}: la LETRA está vacía.`);
+  if (!letraSinAcordes) throw new Error(`${nombreArchivo}: la LETRA está vacía.`);
+  if (datos.youtube && !obtenerYoutubeId(datos.youtube)) {
+    throw new Error(`${nombreArchivo}: YOUTUBE no contiene un enlace válido de YouTube.`);
+  }
+  if (!audioValido(datos.audio)) {
+    throw new Error(`${nombreArchivo}: AUDIO debe ser una URL https o una ruta dentro de assets/audio/.`);
+  }
 
   return {
     id,
@@ -69,9 +104,12 @@ function leerCanto(nombreArchivo) {
     ...(datos.compositor ? { compositor: datos.compositor } : {}),
     ...(datos.anio ? { anio: datos.anio } : {}),
     ...(datos.tono ? { tono: datos.tono } : {}),
+    ...(datos.youtube ? { youtube: datos.youtube } : {}),
+    ...(datos.audio ? { audio: datos.audio } : {}),
     ...(datos.observaciones ? { observaciones: datos.observaciones } : {}),
     ...(datos.momento ? { momento: datos.momento } : {}),
-    letra
+    letra: letraSinAcordes,
+    ...(tieneAcordes ? { letraAcordes: letra } : {})
   };
 }
 
