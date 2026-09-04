@@ -35,6 +35,13 @@ const CANTOS = [
     "categoria": "Marianos",
     "autor": "",
     "letra": "Pega aquí la letra del canto mariano."
+  },
+  {
+    "id": "divino-nino",
+    "titulo": "Divino Niño",
+    "categoria": "Entrada",
+    "autor": "TATIANA NAVARRO, JULIO MONTIEL",
+    "letra": "Coro:\nOH DIVINO NIÑO MI DIOS Y MISEÑOR:\nTÚ SERÁS EL DUEÑO DE MICORAZÓN.\nOH DIVINO NIÑO MI DIOS Y MISEÑOR:\nTÚ SERÁS EL DUEÑO DE MICORAZÓN.\n\nEstrofa 1:\nNiño amable de mi vi-i-da,\nconsuelo de los cristia-a-nos,\nla gracia que necesito\npongo en tus benditas manos.\n\nCoro:\nOH DIVINO NIÑO MI DIOS Y MISEÑOR:\nTÚ SERÁS EL DUEÑO DE MICORAZÓN.\nOH DIVINO NIÑO MI DIOS Y MISEÑOR:\nTÚ SERÁS EL DUEÑO DE MICORAZÓN.\n\nEstrofa 2:\nTú que sabes mis pesa-a-res\npues todos te los confí-i-o,\nda la paz a los turbados\ny alivio al corazón mío.\n\nCoro:\nOH DIVINO NIÑO MI DIOS Y MISEÑOR:\nTÚ SERÁS EL DUEÑO DE MICORAZÓN.\nOH DIVINO NIÑO MI DIOS Y MISEÑOR:\nTÚ SERÁS EL DUEÑO DE MICORAZÓN.\n\nEstrofa 3:\nY aunque tu amor no merezco,\nno recurriré a ti en va-ano\npues eres Hijo de Dios\ny consuelo del cristiano.\n\nCoro:\nOH DIVINO NIÑO MI DIOS Y MISEÑOR:\nTÚ SERÁS EL DUEÑO DE MICORAZÓN.\nOH DIVINO NIÑO MI DIOS Y MISEÑOR:\nTÚ SERÁS EL DUEÑO DE MICORAZÓN.\n\nEstrofa 4:\nAcuérdate, oh niño sa-a-nto,\nque jamás se oyó deci-ir\nque alguno te haya implorado\nsin tu auxilio recibir.\n\nCoro:\nOH DIVINO NIÑO MI DIOS Y MISEÑOR:\nTÚ SERÁS EL DUEÑO DE MICORAZÓN.\nOH DIVINO NIÑO MI DIOS Y MISEÑOR:\nTÚ SERÁS EL DUEÑO DE MICORAZÓN.\n\nEstrofa 5:\nPor eso con fe y confía-a-nza,\nhumildes y arrepentí-i-dos,\nllenos de amor y confianza,\neste favor yo te pido.\n\nCoro:\nOH DIVINO NIÑO MI DIOS Y MISEÑOR:\nTÚ SERÁS EL DUEÑO DE MICORAZÓN.\nOH DIVINO NIÑO MI DIOS Y MISEÑOR:\nTÚ SERÁS EL DUEÑO DE MICORAZÓN."
   }
 ];
 
