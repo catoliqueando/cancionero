@@ -1,0 +1,26 @@
+{
+  "titulo": "Cantos de la Santa Misa",
+  "subtitulo": "Selecciona un canto para ver la letra",
+  "cantos": [
+    {
+      "momento": "Entrada",
+      "icono": "🎵",
+      "id": "canto-ejemplo-entrada"
+    },
+    {
+      "momento": "Ofertorio",
+      "icono": "🍞",
+      "id": "canto-ejemplo-ofertorio"
+    },
+    {
+      "momento": "Comunión",
+      "icono": "✝️",
+      "id": "canto-ejemplo-comunion"
+    },
+    {
+      "momento": "Salida",
+      "icono": "🎶",
+      "id": "canto-ejemplo-mariano"
+    }
+  ]
+}

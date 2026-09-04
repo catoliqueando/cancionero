@@ -1,0 +1,62 @@
+name: Actualizar y publicar el cancionero
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  preparar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el proyecto
+        uses: actions/checkout@v7
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          package-manager-cache: false
+
+      - name: Generar el archivo de cantos
+        run: node scripts/generar-cantos.js
+
+      - name: Guardar el archivo generado
+        shell: bash
+        run: |
+          if git diff --quiet -- cantos.js; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cantos.js
+          git commit -m "Actualizar archivo generado de cantos"
+          git push
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Preparar archivos para publicar
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: .
+
+  publicar:
+    environment:
+      name: github-pages
+      url: ${{ steps.publicacion.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: preparar
+    steps:
+      - name: Publicar en GitHub Pages
+        id: publicacion
+        uses: actions/deploy-pages@v5

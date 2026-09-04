@@ -1,0 +1,13 @@
+TITULO: Canto de entrada — Ejemplo
+CATEGORIA: Entrada
+AUTOR:
+
+LETRA:
+Aquí puedes pegar la letra completa del canto.
+
+Cada salto de línea se conservará automáticamente.
+
+Puedes separar estrofas dejando una línea en blanco.
+
+ESTRIBILLO
+También puedes escribir aquí el estribillo.

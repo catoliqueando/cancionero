@@ -1,0 +1,13 @@
+TITULO: Nombre del canto
+CATEGORIA: Comunión
+AUTOR:
+COMPOSITOR:
+ANO:
+TONO:
+OBSERVACIONES:
+MOMENTO:
+
+LETRA:
+Pega aquí la letra completa del canto.
+
+Cada salto de línea y cada estrofa se conservarán.

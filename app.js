@@ -1,0 +1,203 @@
+
+const CATEGORIAS = [
+  ["Entrada","🎵"],
+  ["Gloria","☀️"],
+  ["Aleluya","📖"],
+  ["Ofertorio","🍞"],
+  ["Santo","🏆"],
+  ["Cordero de Dios","🐑"],
+  ["Comunión","✝️"],
+  ["Marianos","🌹"],
+  ["Espíritu Santo","🕊️"],
+  ["Adoración","🙏"],
+  ["Salida","🎶"]
+];
+
+const $ = (sel) => document.querySelector(sel);
+const esc = (s="") => String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+
+function songById(id){ return CANTOS.find(c => c.id === id); }
+
+function home(){
+  return `
+    <section class="hero-card home-hero" aria-labelledby="home-title">
+      <div class="hero-copy">
+        <div class="eyebrow">Cancionero parroquial</div>
+        <h1 id="home-title">Cantemos juntos al Señor</h1>
+        <p class="lead">Ten a mano los cantos de la celebración y acompaña a la comunidad desde tu celular.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#/misa">
+            <span aria-hidden="true">⛪</span>
+            <span>Cantos de la Misa de hoy</span>
+          </a>
+          <a class="btn btn-secondary" href="#/buscar">
+            <span aria-hidden="true">⌕</span>
+            <span>Buscar un canto</span>
+          </a>
+        </div>
+      </div>
+      <div class="hero-mark" aria-hidden="true">♫</div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <div>
+          <div class="eyebrow">Acceso rápido</div>
+          <h2>Buscar por categoría</h2>
+        </div>
+      </div>
+      <div class="grid">
+        ${CATEGORIAS.map(([cat,icon]) => `
+          <a class="card" href="#/categoria/${encodeURIComponent(cat)}">
+            <div class="card-icon" aria-hidden="true">${icon}</div>
+            <h3>${esc(cat)}</h3>
+            <p>Ver cantos de ${esc(cat.toLowerCase())}</p>
+          </a>
+        `).join("")}
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="note"><span aria-hidden="true">💡</span> El mismo enlace y el mismo QR pueden permanecer impresos. Solo actualizas los cantos de la Misa cuando sea necesario.</div>
+    </section>
+  `;
+}
+
+function misa(){
+  return `
+    <a class="back" href="#/">← Inicio</a>
+    <section class="hero-card page-intro">
+      <div class="eyebrow">Celebración</div>
+      <h2>${esc(MISA_HOY.titulo)}</h2>
+      <p class="lead">${esc(MISA_HOY.subtitulo)}</p>
+    </section>
+    <section class="section mass-list">
+      ${MISA_HOY.cantos.map(item => {
+        const c = songById(item.id);
+        if(!c) return "";
+        return `<a class="row" href="#/canto/${encodeURIComponent(c.id)}">
+          <div class="row-icon" aria-hidden="true">${item.icono}</div>
+          <div class="row-main">
+            <div class="row-title">${esc(item.momento)}</div>
+            <div class="row-sub">${esc(c.titulo)}</div>
+          </div>
+          <div class="chev" aria-hidden="true">›</div>
+        </a>`;
+      }).join("")}
+    </section>
+  `;
+}
+
+function categoria(cat){
+  const songs = CANTOS.filter(c => c.categoria.toLowerCase() === cat.toLowerCase());
+  return `
+    <a class="back" href="#/">← Inicio</a>
+    <section class="hero-card page-intro">
+      <div class="eyebrow">Categoría</div>
+      <h2>${esc(cat)}</h2>
+      <p class="lead">${songs.length} canto${songs.length===1?"":"s"} disponible${songs.length===1?"":"s"}.</p>
+    </section>
+    <section class="section song-list">
+      ${songs.length ? songs.map(c => rowSong(c)).join("") : `<div class="empty">Todavía no hay cantos en esta categoría.</div>`}
+    </section>
+  `;
+}
+
+function rowSong(c){
+  return `<a class="row" href="#/canto/${encodeURIComponent(c.id)}">
+    <div class="row-icon" aria-hidden="true">🎼</div>
+    <div class="row-main">
+      <div class="row-title">${esc(c.titulo)}</div>
+      <div class="row-sub">${esc(c.categoria)}</div>
+    </div>
+    <div class="chev" aria-hidden="true">›</div>
+  </a>`;
+}
+
+function buscar(){
+  return `
+    <a class="back" href="#/">← Inicio</a>
+    <section class="hero-card page-intro">
+      <div class="eyebrow">Cancionero</div>
+      <h2>Buscar un canto</h2>
+      <div class="search-wrap">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <label class="sr-only" for="search">Buscar por nombre o categoría</label>
+        <input id="search" type="search" autocomplete="off" enterkeyhint="search" placeholder="Nombre o categoría">
+      </div>
+    </section>
+    <section class="section song-list" id="results">${CANTOS.map(rowSong).join("")}</section>
+  `;
+}
+
+function canto(id){
+  const c = songById(id);
+  if(!c) return `<a class="back" href="#/">← Inicio</a><div class="empty">No encontré ese canto.</div>`;
+  return `
+    <a class="back" href="javascript:history.back()">← Volver</a>
+    <div class="song-head">
+      <div class="eyebrow">Letra del canto</div>
+      <h2>${esc(c.titulo)}</h2>
+      <div class="song-meta">
+        <span class="badge">${esc(c.categoria)}</span>
+        ${c.autor ? `<span class="badge">${esc(c.autor)}</span>` : ""}
+      </div>
+    </div>
+    <div class="lyrics-controls" role="group" aria-label="Tamaño de la letra">
+      <button class="small-btn" id="minusFont" aria-label="Reducir letra">A−</button>
+      <button class="small-btn" id="plusFont" aria-label="Aumentar letra">A+</button>
+    </div>
+    <article class="lyrics" id="lyrics">${esc(c.letra)}</article>
+  `;
+}
+
+function router(){
+  const app = $("#app");
+  const hash = decodeURIComponent(location.hash || "#/");
+  const parts = hash.slice(2).split("/");
+  const route = parts[0] || "";
+
+  if(route === "misa") app.innerHTML = misa();
+  else if(route === "buscar") app.innerHTML = buscar();
+  else if(route === "categoria") app.innerHTML = categoria(parts.slice(1).join("/"));
+  else if(route === "canto") app.innerHTML = canto(parts.slice(1).join("/"));
+  else app.innerHTML = home();
+
+  window.scrollTo({top:0, behavior:"instant"});
+  bind();
+}
+
+function bind(){
+  const search = $("#search");
+  if(search){
+    search.addEventListener("input", () => {
+      const q = search.value.trim().toLowerCase();
+      const filtered = CANTOS.filter(c =>
+        c.titulo.toLowerCase().includes(q) ||
+        c.categoria.toLowerCase().includes(q)
+      );
+      $("#results").innerHTML = filtered.length
+        ? filtered.map(rowSong).join("")
+        : `<div class="empty">No encontramos cantos con “${esc(search.value)}”.</div>`;
+    });
+  }
+
+  const lyrics = $("#lyrics");
+  if(lyrics){
+    let size = Number(localStorage.getItem("lyricsFontSize") || 1.22);
+    lyrics.style.fontSize = size + "rem";
+    $("#plusFont")?.addEventListener("click", () => {
+      size = Math.min(1.8, size + .1);
+      lyrics.style.fontSize = size + "rem";
+      localStorage.setItem("lyricsFontSize", size);
+    });
+    $("#minusFont")?.addEventListener("click", () => {
+      size = Math.max(.95, size - .1);
+      lyrics.style.fontSize = size + "rem";
+      localStorage.setItem("lyricsFontSize", size);
+    });
+  }
+}
+
+window.addEventListener("hashchange", router);
+window.addEventListener("DOMContentLoaded", router);
