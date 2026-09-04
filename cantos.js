@@ -52,7 +52,7 @@ const CANTOS = [
     "tono": "Em",
     "observaciones": "Rítmico",
     "momento": "Gloria",
-    "letra": "Gloria, gloria a Dios en el cielo\nY en la tierra a los hombres paz (x2)\n\nTe alabamos y te bendecimos\nTe adoramos y glorificamos\nY nosotros hoy te damos gracias\nPor Tu grande y eterna gloria\nGloria, gloria a Dios en el cielo\nY en la tierra a los hombres paz (x2)\n\n- ¡Señor, Dios nuestro!\nPadre, Padre, Padre\n\n- ¡Señor, Dios Hijo!\nPiedad, Piedad, Piedad Señor\n\n- Tú que quitas el pecado del mundo\nEscúchanos, ESCÚCHANOS\n\n- Tú que estás a la derecha del Padre\nPiedad, Piedad, Piedad Señor\n\n(CONTINUAMOS CON EL RITMO)\n- SOLO TÚ ERES SANTO, SOLO TÚ, SEÑOR\nSolo TÚ ALTÍSIMO JE-SU-CRISTO\nCon EL SANTO ESPÍRITU EN LA GLORIA DE DIOS PADRE\nAmén, AMÉN, A-A-A-AMÉN"
+    "letra": "Gloria, gloria a Dios en el cielo\nY en la tierra a los hombres paz (x2)\n\nTe alabamos y te bendecimos\nTe adoramos y glorificamos\nY nosotros hoy te damos gracias\nPor Tu grande y eterna gloria\nGloria, gloria a Dios en el cielo\nY en la tierra a los hombres paz (x2)\n\n- ¡Señor, Dios nuestro!\nPadre, Padre, Padre\n\n- ¡Señor, Dios Hijo!\nPiedad, Piedad, Piedad Señor\n\n- Tú que quitas el pecado del mundo\nEscúchanos, ESCÚCHANOS\n\n- Tú que estás a la derecha del Padre\nPiedad, Piedad, Piedad Señor\n\n- SOLO TÚ ERES SANTO, SOLO TÚ, SEÑOR\nSolo TÚ ALTÍSIMO JE-SU-CRISTO\nCon EL SANTO ESPÍRITU EN LA GLORIA DE DIOS PADRE\nAmén, AMÉN, A-A-A-AMÉN"
   },
   {
     "id": "jesus-esta-vivo",
