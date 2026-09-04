@@ -1,26 +1,61 @@
 {
-  "titulo": "Cantos de la Santa Misa",
-  "subtitulo": "Selecciona un canto para ver la letra",
+  "titulo": "Cantos de la Santa Misa - Divino Niño",
+  "subtitulo": "7 de septiembre de 2026",
   "cantos": [
     {
       "momento": "Entrada",
       "icono": "🎵",
-      "id": "canto-ejemplo-entrada"
+      "id": "divino-nino"
+    },
+    {
+      "momento": "Piedad",
+      "icono": "🙏",
+      "id": "piedad-1"
+    },
+    {
+      "momento": "Gloria",
+      "icono": "☀️",
+      "id": "gloria-mejia"
+    },
+    {
+      "momento": "Aleluya",
+      "icono": "📖",
+      "id": "aleluya-busca-primero"
     },
     {
       "momento": "Ofertorio",
       "icono": "🍞",
-      "id": "canto-ejemplo-ofertorio"
+      "id": "vino-y-pan-en-oblacion"
+    },
+    {
+      "momento": "Padre Nuestro",
+      "icono": "🕯️",
+      "id": "padre-nuestro-stretto"
+    },
+    {
+      "momento": "Santo",
+      "icono": "🏆",
+      "id": "santo-misa-de-las-americas"
+    },
+    {
+      "momento": "Cordero",
+      "icono": "🐑",
+      "id": "cordero-don-bosco"
     },
     {
       "momento": "Comunión",
       "icono": "✝️",
-      "id": "canto-ejemplo-comunion"
+      "id": "bienvenido-nino-amado"
     },
     {
-      "momento": "Salida",
-      "icono": "🎶",
-      "id": "canto-ejemplo-mariano"
+      "momento": "Comunión",
+      "icono": "✝️",
+      "id": "jesus-esta-vivo"
+    },
+    {
+      "momento": "Salida / Mariana",
+      "icono": "🌹",
+      "id": "madre-buena"
     }
   ]
 }

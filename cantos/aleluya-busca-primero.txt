@@ -1,0 +1,10 @@
+TITULO: Aleluya Busca Primero
+CATEGORIA: Aleluya
+AUTOR:
+TONO: C
+MOMENTO: Aleluya
+
+LETRA:
+CORO
+Aleluya alelu aleluya
+aleluya aleluya (x2)

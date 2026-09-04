@@ -1,9 +1,11 @@
 
 const CATEGORIAS = [
   ["Entrada","🎵"],
+  ["Piedad","🙏"],
   ["Gloria","☀️"],
   ["Aleluya","📖"],
   ["Ofertorio","🍞"],
+  ["Padre Nuestro","🕯️"],
   ["Santo","🏆"],
   ["Cordero de Dios","🐑"],
   ["Comunión","✝️"],
@@ -140,8 +142,13 @@ function canto(id){
       <h2>${esc(c.titulo)}</h2>
       <div class="song-meta">
         <span class="badge">${esc(c.categoria)}</span>
-        ${c.autor ? `<span class="badge">${esc(c.autor)}</span>` : ""}
+        ${c.momento && c.momento !== c.categoria ? `<span class="badge">Momento: ${esc(c.momento)}</span>` : ""}
+        ${c.autor ? `<span class="badge">Autor: ${esc(c.autor)}</span>` : ""}
+        ${c.compositor ? `<span class="badge">Compositor: ${esc(c.compositor)}</span>` : ""}
+        ${c.anio ? `<span class="badge">Año: ${esc(c.anio)}</span>` : ""}
+        ${c.tono ? `<span class="badge">Tono: ${esc(c.tono)}</span>` : ""}
       </div>
+      ${c.observaciones ? `<p class="song-note">${esc(c.observaciones)}</p>` : ""}
     </div>
     <div class="lyrics-controls" role="group" aria-label="Tamaño de la letra">
       <button class="small-btn" id="minusFont" aria-label="Reducir letra">A−</button>
