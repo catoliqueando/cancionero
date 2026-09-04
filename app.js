@@ -1,24 +1,38 @@
 
+const CATEGORIAS_BASE = [
+  ["Entrada","🎵"], ["Piedad","🙏"], ["Gloria","☀️"], ["Salmo","📜"],
+  ["Aleluya","📖"], ["Ofertorio","🍞"], ["Santo","🏆"], ["Aclamación","🙌"],
+  ["Padre Nuestro","🕯️"], ["Cordero de Dios","🐑"], ["Comunión","✝️"],
+  ["Acción de gracias","💛"], ["Marianos","🌹"], ["Espíritu Santo","🕊️"],
+  ["Adoración","🙏"], ["Salida","🎶"]
+];
+
+const iconosCategoria = new Map(CATEGORIAS_BASE.map(([nombre, icono]) => [nombre.toLowerCase(), icono]));
+const categoriasConocidas = new Set(CATEGORIAS_BASE.map(([nombre]) => nombre.toLowerCase()));
+const categoriasNuevas = CANTOS
+  .map(canto => canto.categoria)
+  .filter(categoria => {
+    const clave = categoria.toLowerCase();
+    if(categoriasConocidas.has(clave)) return false;
+    categoriasConocidas.add(clave);
+    return true;
+  })
+  .sort((a, b) => a.localeCompare(b, "es", { sensitivity: "base" }));
 const CATEGORIAS = [
-  ["Entrada","🎵"],
-  ["Piedad","🙏"],
-  ["Gloria","☀️"],
-  ["Aleluya","📖"],
-  ["Ofertorio","🍞"],
-  ["Padre Nuestro","🕯️"],
-  ["Santo","🏆"],
-  ["Cordero de Dios","🐑"],
-  ["Comunión","✝️"],
-  ["Marianos","🌹"],
-  ["Espíritu Santo","🕊️"],
-  ["Adoración","🙏"],
-  ["Salida","🎶"]
+  ...CATEGORIAS_BASE,
+  ...categoriasNuevas.map(categoria => [categoria, iconosCategoria.get(categoria.toLowerCase()) || "🎼"])
 ];
 
 const $ = (sel) => document.querySelector(sel);
 const esc = (s="") => String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
 
 function songById(id){ return CANTOS.find(c => c.id === id); }
+
+function cantosDeMisa(){
+  return MISA_HOY.cantos
+    .map((item, indice) => ({ item, indice, canto: songById(item.id) }))
+    .filter(entrada => entrada.canto);
+}
 
 function home(){
   return `
@@ -66,6 +80,7 @@ function home(){
 }
 
 function misa(){
+  const seleccion = cantosDeMisa();
   return `
     <a class="back" href="#/">← Inicio</a>
     <section class="hero-card page-intro">
@@ -74,14 +89,12 @@ function misa(){
       <p class="lead">${esc(MISA_HOY.subtitulo)}</p>
     </section>
     <section class="section mass-list">
-      ${MISA_HOY.cantos.map(item => {
-        const c = songById(item.id);
-        if(!c) return "";
-        return `<a class="row" href="#/canto/${encodeURIComponent(c.id)}">
+      ${seleccion.map(({item, indice, canto}) => {
+        return `<a class="row" href="#/misa/canto/${indice}/${encodeURIComponent(canto.id)}">
           <div class="row-icon" aria-hidden="true">${item.icono}</div>
           <div class="row-main">
             <div class="row-title">${esc(item.momento)}</div>
-            <div class="row-sub">${esc(c.titulo)}</div>
+            <div class="row-sub">${esc(canto.titulo)}</div>
           </div>
           <div class="chev" aria-hidden="true">›</div>
         </a>`;
@@ -132,11 +145,31 @@ function buscar(){
   `;
 }
 
-function canto(id){
+function enlaceMisa(entrada, texto, clase=""){
+  if(!entrada) return `<span class="song-pager-link is-disabled ${clase}" aria-hidden="true"></span>`;
+  return `<a class="song-pager-link ${clase}" href="#/misa/canto/${entrada.indice}/${encodeURIComponent(entrada.canto.id)}">${texto}</a>`;
+}
+
+function canto(id, indiceMisa=null){
   const c = songById(id);
   if(!c) return `<a class="back" href="#/">← Inicio</a><div class="empty">No encontré ese canto.</div>`;
+
+  const seleccion = cantosDeMisa();
+  let posicion = indiceMisa === null ? -1 : seleccion.findIndex(entrada => entrada.indice === indiceMisa && entrada.canto.id === id);
+  if(posicion === -1 && indiceMisa !== null) posicion = seleccion.findIndex(entrada => entrada.canto.id === id);
+  const enMisa = posicion >= 0;
+  const anterior = enMisa ? seleccion[posicion - 1] : null;
+  const siguiente = enMisa ? seleccion[posicion + 1] : null;
+  const momento = enMisa ? seleccion[posicion].item.momento : "";
+
   return `
-    <a class="back" href="javascript:history.back()">← Volver</a>
+    <a class="back" href="${enMisa ? "#/misa" : "javascript:history.back()"}">← ${enMisa ? "Lista de la Misa" : "Volver"}</a>
+    ${enMisa ? `
+      <div class="mass-progress" aria-label="Canto ${posicion + 1} de ${seleccion.length}">
+        <span>${esc(momento)}</span>
+        <strong>${posicion + 1} de ${seleccion.length}</strong>
+      </div>
+    ` : ""}
     <div class="song-head">
       <div class="eyebrow">Letra del canto</div>
       <h2>${esc(c.titulo)}</h2>
@@ -155,6 +188,12 @@ function canto(id){
       <button class="small-btn" id="plusFont" aria-label="Aumentar letra">A+</button>
     </div>
     <article class="lyrics" id="lyrics">${esc(c.letra)}</article>
+    ${enMisa ? `
+      <nav class="song-pager" aria-label="Navegación entre cantos de la Misa">
+        ${enlaceMisa(anterior, `<span aria-hidden="true">←</span><span><small>Anterior</small>${anterior ? esc(anterior.canto.titulo) : ""}</span>`, "is-previous")}
+        ${enlaceMisa(siguiente, `<span><small>Siguiente</small>${siguiente ? esc(siguiente.canto.titulo) : ""}</span><span aria-hidden="true">→</span>`, "is-next")}
+      </nav>
+    ` : ""}
   `;
 }
 
@@ -164,7 +203,11 @@ function router(){
   const parts = hash.slice(2).split("/");
   const route = parts[0] || "";
 
-  if(route === "misa") app.innerHTML = misa();
+  if(route === "misa" && parts[1] === "canto") {
+    const indice = Number.parseInt(parts[2], 10);
+    app.innerHTML = canto(parts.slice(3).join("/"), Number.isNaN(indice) ? null : indice);
+  }
+  else if(route === "misa") app.innerHTML = misa();
   else if(route === "buscar") app.innerHTML = buscar();
   else if(route === "categoria") app.innerHTML = categoria(parts.slice(1).join("/"));
   else if(route === "canto") app.innerHTML = canto(parts.slice(1).join("/"));
@@ -207,4 +250,51 @@ function bind(){
 }
 
 window.addEventListener("hashchange", router);
-window.addEventListener("DOMContentLoaded", router);
+
+const VERSION_SITIO = document.querySelector('meta[name="site-version"]')?.content || "";
+let revisionEnCurso = false;
+
+function recargarVersion(version){
+  const url = new URL(location.href);
+  url.searchParams.set("version", version);
+  location.replace(url.toString());
+}
+
+function mostrarActualizacion(version){
+  if(document.querySelector("#updateNotice")) return;
+  const aviso = document.createElement("button");
+  aviso.id = "updateNotice";
+  aviso.className = "update-notice";
+  aviso.type = "button";
+  aviso.innerHTML = `<span aria-hidden="true">↻</span> Hay cantos nuevos. Toca para actualizar.`;
+  aviso.addEventListener("click", () => recargarVersion(version));
+  document.body.appendChild(aviso);
+}
+
+async function revisarActualizacion(){
+  if(revisionEnCurso || !VERSION_SITIO || VERSION_SITIO.includes("__") || VERSION_SITIO === "local") return;
+  revisionEnCurso = true;
+  try{
+    const respuesta = await fetch(`version.json?t=${Date.now()}`, { cache: "no-store" });
+    if(!respuesta.ok) return;
+    const datos = await respuesta.json();
+    if(!datos.version || datos.version === VERSION_SITIO) return;
+    const ruta = location.hash || "#/";
+    if(ruta === "#/" || ruta === "#/misa") recargarVersion(datos.version);
+    else mostrarActualizacion(datos.version);
+  }catch(_error){
+    // Sin conexión: el cancionero sigue funcionando con la versión ya cargada.
+  }finally{
+    revisionEnCurso = false;
+  }
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  router();
+  window.setTimeout(revisarActualizacion, 1500);
+  window.setInterval(revisarActualizacion, 60 * 1000);
+});
+window.addEventListener("focus", revisarActualizacion);
+document.addEventListener("visibilitychange", () => {
+  if(document.visibilityState === "visible") revisarActualizacion();
+});

@@ -43,6 +43,9 @@ Por ejemplo, `canto-de-ejemplo.txt` genera el ID `canto-de-ejemplo`.
 4. Copia la plantilla, agrega la letra y selecciona **Commit changes**.
 5. La automatización revisará el archivo, actualizará el cancionero y publicará el sitio.
 
+Si utilizas una categoría nueva, aparecerá automáticamente entre las categorías del
+sitio después de la publicación.
+
 ## Si la letra está en PDF
 
 No se recomienda publicar el PDF como fuente del canto. La extracción automática de
@@ -54,8 +57,23 @@ extraerá, se revisará y se convertirá al formato de la carpeta `cantos`.
 
 ## Cambiar la Misa de hoy
 
-Edita `misa-hoy.json` y cambia los valores de `id`. Cada ID debe coincidir con el
-nombre de un archivo de la carpeta `cantos`, sin la extensión `.txt`.
+Abre el [Administrador de la Misa de hoy](https://catoliqueando.github.io/cancionero/admin-misa.html).
+Allí puedes cambiar el título, seleccionar los cantos, repetir un momento, ordenar
+la lista y descargar o copiar la configuración terminada.
+
+Para publicarla:
+
+1. Pulsa **Copiar configuración** en el administrador.
+2. Pulsa **Abrir misa-hoy.json en GitHub** e inicia sesión si se solicita.
+3. Reemplaza todo el contenido del archivo por la configuración copiada.
+4. Selecciona **Commit changes**.
+
+La publicación se ejecuta automáticamente. Cada versión usa una identificación
+nueva y el sitio comprueba si hay cambios al abrirse o volver a la pestaña, para
+que navegadores y celulares no mantengan una lista antigua.
+
+También se puede editar `misa-hoy.json` manualmente. Cada `id` debe coincidir con
+el nombre de un archivo de la carpeta `cantos`, sin la extensión `.txt`.
 
 ## Probar los cambios en la computadora
 

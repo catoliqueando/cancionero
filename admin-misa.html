@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f3e8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Administrador de la selección de cantos para la Misa de hoy.">
+  <meta name="site-version" content="__SITE_VERSION__">
+  <title>Administrar Misa de hoy | Catoliqueando</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=__SITE_VERSION__">
+  <link rel="stylesheet" href="admin-misa.css?v=__SITE_VERSION__">
+  <script>
+    (() => {
+      const actual = "__SITE_VERSION__";
+      if (actual.includes("__") || actual === "local") return;
+      fetch(`version.json?t=${Date.now()}`, { cache: "no-store" })
+        .then(respuesta => respuesta.ok ? respuesta.json() : null)
+        .then(datos => {
+          if (!datos?.version || datos.version === actual) return;
+          const url = new URL(location.href);
+          url.searchParams.set("version", datos.version);
+          location.replace(url.toString());
+        })
+        .catch(() => {});
+    })();
+  </script>
+</head>
+<body class="admin-page">
+  <a class="skip-link" href="#adminMain">Ir al administrador</a>
+
+  <header class="site-header">
+    <a href="index.html#/misa" class="brand" aria-label="Abrir el cancionero">
+      <img src="assets/encabezado-catoliqueando.png" alt="Catoliqueando - Cancionero Parroquial">
+    </a>
+  </header>
+
+  <main id="adminMain" class="admin-shell" tabindex="-1">
+    <a class="back" href="index.html#/misa">← Ver la Misa publicada</a>
+
+    <section class="hero-card admin-intro">
+      <div class="eyebrow">Herramienta de administración</div>
+      <h1>Prepara la Misa de hoy</h1>
+      <p class="lead">Elige los cantos y ordénalos tal como se usarán en la celebración. Puedes incluir varios cantos en un mismo momento.</p>
+    </section>
+
+    <section class="admin-card" aria-labelledby="datosTitle">
+      <div class="admin-heading">
+        <div>
+          <div class="eyebrow">Encabezado</div>
+          <h2 id="datosTitle">Datos de la celebración</h2>
+        </div>
+      </div>
+      <div class="admin-fields">
+        <label>
+          <span>Título</span>
+          <input id="massTitle" type="text" autocomplete="off">
+        </label>
+        <label>
+          <span>Fecha o descripción</span>
+          <input id="massSubtitle" type="text" autocomplete="off" placeholder="Ejemplo: 7 de septiembre de 2026">
+        </label>
+      </div>
+    </section>
+
+    <section class="admin-card" aria-labelledby="selectionTitle">
+      <div class="admin-heading selection-heading">
+        <div>
+          <div class="eyebrow">Orden de la celebración</div>
+          <h2 id="selectionTitle">Cantos seleccionados</h2>
+        </div>
+        <button class="btn btn-secondary" id="addSong" type="button"><span aria-hidden="true">＋</span> Agregar canto</button>
+      </div>
+      <div id="selectionList" class="admin-selection"></div>
+    </section>
+
+    <section class="admin-card publish-card" aria-labelledby="publishTitle">
+      <div class="eyebrow">Último paso</div>
+      <h2 id="publishTitle">Publicar los cambios</h2>
+      <ol class="publish-steps">
+        <li>Copia la configuración terminada.</li>
+        <li>Abre el archivo en GitHub y reemplaza todo su contenido.</li>
+        <li>Pulsa <strong>Commit changes</strong>. El sitio se actualizará automáticamente.</li>
+      </ol>
+      <div class="publish-actions">
+        <button class="btn btn-primary" id="copyConfig" type="button">Copiar configuración</button>
+        <a class="btn btn-secondary" href="https://github.com/catoliqueando/cancionero/edit/main/misa-hoy.json" target="_blank" rel="noopener">Abrir misa-hoy.json en GitHub ↗</a>
+        <button class="text-button" id="downloadConfig" type="button">Descargar copia</button>
+      </div>
+      <p class="admin-status" id="adminStatus" role="status" aria-live="polite"></p>
+      <details class="config-preview">
+        <summary>Ver configuración generada</summary>
+        <label class="sr-only" for="jsonOutput">Configuración JSON generada</label>
+        <textarea id="jsonOutput" readonly spellcheck="false"></textarea>
+      </details>
+      <p class="security-note"><strong>Nota:</strong> este administrador no guarda contraseñas ni escribe directamente en GitHub. La publicación se confirma dentro de tu cuenta de GitHub.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-cross" aria-hidden="true">✝</div>
+    <strong>Catoliqueando</strong>
+    <span>FE • ESPERANZA • AMOR</span>
+  </footer>
+
+  <script src="cantos.js?v=__SITE_VERSION__"></script>
+  <script src="admin-misa.js?v=__SITE_VERSION__"></script>
+</body>
+</html>

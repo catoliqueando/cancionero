@@ -45,10 +45,13 @@ jobs:
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v5
 
+      - name: Crear la versión pública sin caché antigua
+        run: node scripts/preparar-publicacion.js
+
       - name: Preparar archivos para publicar
         uses: actions/upload-pages-artifact@v4
         with:
-          path: .
+          path: _site
 
   publicar:
     environment:
