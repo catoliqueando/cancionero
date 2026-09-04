@@ -113,7 +113,7 @@ const CANTOS = [
 
 const MISA_HOY = {
   "titulo": "Cantos de la Santa Misa - Divino Niño",
-  "subtitulo": "7 de septiembre de 2026",
+  "subtitulo": "6 de septiembre de 2026",
   "cantos": [
     {
       "momento": "Entrada",
@@ -121,19 +121,9 @@ const MISA_HOY = {
       "id": "divino-nino"
     },
     {
-      "momento": "Piedad",
-      "icono": "🙏",
-      "id": "piedad-1"
-    },
-    {
       "momento": "Gloria",
       "icono": "☀️",
       "id": "gloria-mejia"
-    },
-    {
-      "momento": "Aleluya",
-      "icono": "📖",
-      "id": "aleluya-busca-primero"
     },
     {
       "momento": "Ofertorio",
