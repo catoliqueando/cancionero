@@ -244,7 +244,13 @@ h3{font-size:1.55rem}
   .media-actions{gap:6px}
   .tool-btn{padding:8px 10px;font-size:.85rem}
   .small-btn{background:#fffdf8;box-shadow:0 4px 12px rgba(67,55,34,.1)}
-  .transpose-controls{justify-content:center}
+  .transpose-controls{
+    display:grid;grid-template-columns:minmax(48px,56px) minmax(100px,1fr) minmax(48px,56px);
+    align-items:center;justify-content:center;column-gap:8px;row-gap:10px;padding:12px
+  }
+  .transpose-controls>span{grid-column:1/-1;text-align:center}
+  .transpose-controls .small-btn{width:100%;min-width:0}
+  .transpose-controls strong{min-width:0}
   .chord-line{min-height:2.9em}
 }
 @media(prefers-reduced-motion:reduce){
