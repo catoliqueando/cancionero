@@ -5,14 +5,14 @@ TONO: C
 MOMENTO: Ofertorio
 
 LETRA:
-Vino y pan en oblación
-esperan el milagro del Señor.
+[Am]Vino y [Dm]pan [Am]en obla[G]ción
+[C]esperan el [F]milagro [A#]del [G7]Señor.
 
-Ve nuestra ofrenda sobre tu santo altar:
-era en los campos dulce vid y trigal.
+[C]Ve nuestra [Em]ofrenda [F]sobre [G]tu santo [C]altar:
+[G#]era en los [D#]campos [C#]dulce [C]vid y [G7]trigal.
 
-Pero tú, por tu bondad
-transformas nuestra ofrenda en ti Señor.
+[Am]Pero tú, [Dm]por [Am]tu bon[G]dad
+[C]transformas nuestra [F]ofrenda en ti [A#]Se[G7]ñor.
 
-Toma mi vida y también cambiará.
-Llena mi alma de tu gracia y tu paz. Amén.
+[C]Toma mi [Em]vida [F]y también [G]cambiará.[C]
+[G#]Llena mi [D#]alma de [C#]tu [C]gracia y tu [G]paz. [C]Amén.

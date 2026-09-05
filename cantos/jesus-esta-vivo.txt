@@ -5,16 +5,16 @@ TONO: E
 MOMENTO: Comunión
 
 LETRA:
-Tanto amó Dios al mundo
-que a su único hijo, él entregó
-Para que todo aquel que crea en Él
-no muera mas tenga vida eterna
+[E]Tanto amó [B]Dios al [C#m]mundo
+que a su único hijo, [A][F#m7]él entre[B]gó
+[G#7]Para que todo [C#m]aquel que [B]crea en [A]Él
+no [B]muera mas [F#m7]tenga vida [B]eterna
 
-Jesús está vivo
-Jesús está vivo
-Es el pan de vida, bajado del Cielo
-Jesús está vivo
-Jesús está vivo
-Su sangre me sana, y sacia mi alma
-Está vivo, está presente, mi Dios es real
-y yo le adoro reverente
+[F#m7]Je[B7]sús está [E]vivo
+[B]Jesús está [C#m]vivo
+Es el [B]pan de [A]vida, [F#m7]bajado del [B]Cielo
+[B]Jesús está [E]vivo
+[B]Jesús está [C#m]vivo
+Su [B]sangre me sana, [A]y sacia mi [B]alma
+Está [F#m7]vivo, está [G#m7]presente, mi [F#m]Dios es [A]real
+y yo le [B]adoro [E]reverente

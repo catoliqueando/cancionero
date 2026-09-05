@@ -5,7 +5,7 @@ TONO: C
 MOMENTO: Piedad
 
 LETRA:
-Señor ten piedad de nosotros, Señor ten piedad (bis)
-Cristo ten piedad de nosotros, Cristo ten piedad (bis) (segunda)
-Señor ten piedad de nosotros, Señor ten piedad
-Señor ten piedad de nosotros, Señor ten piedad (bis)
+[Am]Señor ten [A7]piedad de [Dm]nosotros, [G]Señor ten [C]piedad [E7](bis)
+[Am]Cristo ten piedad de [G]nosotros, [F]Cristo [Dm]ten piedad [E7](bis) (segunda)
+[Am]Señor ten [A7]piedad de [Dm]nosotros, [G]Señor ten [C]pie[E7]dad
+[Am]Señor ten piedad de [Dm]nosotros, [E]Señor ten pie[Am]dad (bis)

@@ -6,46 +6,46 @@ MOMENTO: Comunión
 
 LETRA:
 ESTROFA 1
-Hoy abrimos nuestras puertas,
-con amor y con fervor,
-porque llega el Divino Niño
-a llenarnos de su amor.
+[A]Hoy abrimos nuestras puertas,
+[C#m]con amor y con fervor,
+[D]porque llega el Divino Niño
+[E]a llenarnos de su amor.
 
 ESTROFA 2
-Tus manitas pequeñitas
-traen consuelo y bendición,
-y tu dulce mirada ilumina
-cada hogar y corazón.
+[A]Tus manitas pequeñitas
+[C#m]traen consuelo y bendición,
+[D]y tu dulce mirada ilu[A]mina
+cada [Bm]hogar y [E]cora[A]zón.
 
 CORO
-¡Bienvenido, Niño amado,
-Rey del cielo y de la paz!
-*En tus brazos encontramos
-esperanza y libertad.
--Divino Niño Jesús,
-*quédate en nuestro hogar,
-con tu luz y tu ternura
-vennos siempre a acompañar.
+[A]¡Bienvenido, Niño amado,
+Rey del [E]cielo y de la paz!
+*En tus [F#m]brazos encontramos
+esperanza y [C#m]libertad.
+[D]-Divino Niño Jesús,
+*[A]quédate en nuestro [E]ho[F#m]gar,
+[Bm]con tu luz y tu [F#m]ternu[E]ra
+vennos siempre a acompa[A]ñar.
 
 ESTROFA 3
-Entre cantos y oraciones
-hoy te queremos honrar,
-*porque eres nuestro refugio,
-nuestro guía y nuestro pan.
-Que tu risa santa y pura
-nos enseñe a perdonar,
-*y que nunca en nuestras vidas
-falte fe para luchar.
+[A]Entre cantos y oraciones
+hoy te [C#m]queremos honrar,
+*[D]porque eres nuestro refugio,
+nuestro [A]guía y nuestro [E]pan.
+[A]Que tu risa santa y pura
+nos [C#m]enseñe a perdonar,
+*[D]y que nunca en nuestras [A]vidas
+falte [Bm]fe para [E]lu[A]char.
 
 CORO
-¡Bienvenido, Niño amado,
-Rey del cielo y de la paz!
-En tus brazos encontramos
-esperanza y libertad.
-Divino Niño Jesús,
-quédate en nuestro hogar,
-con tu luz y tu ternura
-vennos siempre a acompañar.
+[A]¡Bienvenido, Niño amado,
+Rey del [E]cielo y de la paz!
+En tus [F#m]brazos encontramos
+esperanza y [C#m]libertad.
+[D]Divino Niño Jesús,
+[A]quédate en nuestro [E]ho[F#m]gar,
+[Bm]con tu luz y tu [F#m]ternu[E]ra
+vennos siempre a acompa[A]ñar.
 
 ESTROFA 4
 Niñito lindo del cielo,

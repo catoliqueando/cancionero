@@ -5,17 +5,17 @@ TONO: C
 MOMENTO: Padre Nuestro
 
 LETRA:
-Padre nuestro que estás en el cielo
-Santificado sea tu nombre
-Venga a nos (venga a nos) Venga tu reino
-Hágase tu voluntad
-Así en la tierra Como en cielo
-Danos hoy nuestro pan
-De cada día
+[C]Padre nuestro que estás en el [Am]cielo
+[F]Santificado [Dm]sea tu [G]nombre
+Venga a [C]nos (venga a nos) Venga tu [Am]reino
+[F]Hágase [Dm]tu volun[G]tad
+Así en la [C]tierra Como en [Am]cielo
+Danos [F]hoy nuestro [Dm]pan
+De cada [G]día
 
-Y perdona nuestras ofensas
-Como nosotros perdonamos
-Aaa los (Aaa los) que nos ofenden
-No nos dejes caer en tentación
+Y per[C]dona nuestras [Am]ofensas
+Como [F]nosotros [Dm]perdo[G]namos
+Aaa [C]los (Aaa los) que nos [Am]ofenden
+No nos [F]dejes caer [Dm]en tenta[G]ción
 Padre nuestro, Padre nuestro
-Líbranos de todo maaaal
+[C]Líbranos de todo [Am]maaaal

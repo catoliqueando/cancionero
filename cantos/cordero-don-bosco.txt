@@ -5,16 +5,16 @@ TONO: C
 MOMENTO: Cordero
 
 LETRA:
-Cordero de Dios
-Que quitas el pecado del mundo
-Ten piedad, ten piedad
-Ten piedad oh Señor.
-Ten piedad, ten piedad
-Ten piedad oh Señor. (bis)
+[C]Cordero de [Em]Dios
+Que [F]quitas el pecado del [G]mundo
+[F]Ten piedad, [C]ten piedad
+[G]Ten piedad oh [C]Señor.
+[F]Ten piedad, [C]ten piedad
+[G]Ten piedad oh [C]Señor.[C7] (bis)
 
-Cordero de Dios
-Que quitas el pecado del mundo
-Danos la paz, Danos la paz,
-Danos la paz oh Señor
-Danos la paz, Danos la paz,
-Danos la paz oh Señor
+[C]Cordero de [Em]Dios
+Que [F]quitas el pecado del [G]mundo
+[F]Danos la paz, [C]Danos la paz,
+[G]Danos la paz oh [C]Señor[C7]
+[F]Danos la paz, [C]Danos la paz,
+[G]Danos la paz oh [C]Señor[C7]
