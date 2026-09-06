@@ -165,7 +165,7 @@ const MISA_HOY = {
     {
       "momento": "Ofertorio",
       "icono": "🍷​🍞​",
-      "id": "vino-y-pan-en-oblacion"
+      "id": "ofrenda-de-amor"
     },
     {
       "momento": "Santo",
