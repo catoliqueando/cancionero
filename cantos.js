@@ -91,6 +91,16 @@ const CANTOS = [
     "letraAcordes": "[Am]Tantas cosas en la vida\nNos of[Dm]recen plenitud\nY no son [G7]más que mentiras\nQue desgas[C]tan la inquie[E7]tud\nTú has llenado mi exis[Am]tencia\nAl quererme de ver[Dm]dad\nYo quisiera [F]Madre Buena amarte [E7]más\n\n[Am]En silencio escuchabas\nLa palabra [Dm]de Jesús\nY la hacías [G7]Pan de Vida\nMedi[C]tando en tu inte[E7]rior\nLa semilla que ha ca[Am]ído\nYa germina y está en [Dm]flor\nCon el corazón en [F]fiesta cantar[E]é.\n\n[C]Ave María, [Dm][F]Ave [C]María[G]\n[C]Ave María, [Dm][F]Ave [C]María[G][C][E7]\n\n[Am]Desde que yo era muy niño\nHas estado [Dm]junto a mí\nY guiado de [G7]tu mano\nAprendí [C]a decir [E7]sí\nAl calor de mi espe[Am]ranza\nNunca se enfrió mi [Dm]fe\nEn la noche más os[F]cura fuiste [E]luz\n\n[Am]No me dejes Madre mía\nVen conmigo a ca[Dm]minar\nQuiero compartir [G7]mi vida\nY crear [C]fraterni[E7]dad\nMuchas cosas en noso[Am]tros\nSon el fruto de tu a[Dm]mor\nLa plegaria más sen[F]cilla cantar[E]é\n\n[C]Ave María, [Dm][F]Ave [C]María[G]\n[C]Ave María, [Dm][F]Ave [C]María[G][C]"
   },
   {
+    "id": "ofrenda-de-amor",
+    "titulo": "Ofrenda de Amor",
+    "categoria": "Ofertorio",
+    "autor": "",
+    "tono": "A",
+    "momento": "Ofertorio",
+    "letra": "POR LOS NIÑOS QUE EMPIEZAN LA VIDA\nPOR LOS HOMBRES SIN TECHO NI HOGAR\nPOR LOS PUEBLOS QUE SUFREN LA GUERRA\nTE OFRECEMOS, EL VINO Y EL PAN         \n\nPAN Y VINO SOBRE EL ALTAR\nSON OFRENDA DE AMOR   \nPAN Y VINO SERÁN DESPUÉS        \nTU CUERPO Y SANGRE SEÑOR \n\nPOR LOS HOMBRES QUE VIVEN UNIDOS\nPOR LOS HOMBRES QUE BUSCAN LA PAZ\nPOR LOS PUEBLOS QUE NO TE CONOCEN\nTE OFRECEMOS EL VINO Y EL PAN\n\nPOR AQUELLOS A QUIENES QUEREMOS\nPOR NOSOTROS Y NUESTRA AMISTAD\nPOR LOS VIVOS Y POR LOS DIFUNTOS\nTE OFRECEMOS EL VINO Y EL PAN",
+    "letraAcordes": "POR L[A]OS NIÑOS QUE EMPIEZAN LA V[E]IDA\nPOR LOS [A]HOMBRES SIN T[D]ECHO NI HOG[E]AR\nPOR LOS PU[A]EBLOS QUE SUFREN LA GU[E]ERRA\nTE OFREC[D]EMOS, EL V[E]INO Y EL P[A]AN      [A7]   \n\nP[D]AN Y VINO SOBRE EL ALT[E]AR\nS[D]ON OFR[E]ENDA DE AM[A]OR   \nP[F#m]AN Y VINO SERÁN DESPU[Bm]ÉS        \nTU CU[E]ERPO Y SANGRE SEÑO[A]R \n\nPOR LOS HOMBRES QUE VIVEN UNIDOS\nPOR LOS HOMBRES QUE BUSCAN LA PAZ\nPOR LOS PUEBLOS QUE NO TE CONOCEN\nTE OFRECEMOS EL VINO Y EL PAN\n\nPOR AQUELLOS A QUIENES QUEREMOS\nPOR NOSOTROS Y NUESTRA AMISTAD\nPOR LOS VIVOS Y POR LOS DIFUNTOS\nTE OFRECEMOS EL VINO Y EL PAN"
+  },
+  {
     "id": "padre-nuestro-stretto",
     "titulo": "Padre Nuestro Stretto",
     "categoria": "Padre Nuestro",
