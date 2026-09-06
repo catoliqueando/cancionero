@@ -143,24 +143,29 @@ const MISA_HOY = {
       "id": "divino-nino"
     },
     {
+      "momento": "Piedad",
+      "icono": "🙏",
+      "id": "piedad-1"
+    },
+    {
       "momento": "Gloria",
       "icono": "☀️",
       "id": "gloria-mejia"
     },
     {
       "momento": "Ofertorio",
-      "icono": "🍞",
+      "icono": "🍷​🍞​",
       "id": "vino-y-pan-en-oblacion"
+    },
+    {
+      "momento": "Santo",
+      "icono": "🕊️​",
+      "id": "santo-misa-de-las-americas"
     },
     {
       "momento": "Padre Nuestro",
       "icono": "🕯️",
       "id": "padre-nuestro-stretto"
-    },
-    {
-      "momento": "Santo",
-      "icono": "🏆",
-      "id": "santo-misa-de-las-americas"
     },
     {
       "momento": "Cordero",
