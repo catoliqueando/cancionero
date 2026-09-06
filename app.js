@@ -1,7 +1,7 @@
 
 const CATEGORIAS_BASE = [
   ["Entrada","🎵"], ["Piedad","🙏"], ["Gloria","☀️"], ["Salmo","📜"],
-  ["Aleluya","📖"], ["Ofertorio","🍞"], ["Santo","🏆"], ["Aclamación","🙌"],
+  ["Aleluya","📖"], ["Ofertorio","🍷​🍞​"], ["Santo","🕊️"], ["Aclamación","🙌"],
   ["Padre Nuestro","🕯️"], ["Cordero de Dios","🐑"], ["Comunión","✝️"],
   ["Acción de gracias","💛"], ["Marianos","🌹"], ["Espíritu Santo","🕊️"],
   ["Adoración","🙏"], ["Salida","🎶"]
