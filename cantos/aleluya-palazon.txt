@@ -1,0 +1,14 @@
+TITULO: Aleluya Palazón
+CATEGORIA: Aleluya
+AUTOR: Francisco Palazón
+TONO: D
+MOMENTO: Aleluya
+
+LETRA:
+[D]Aleluya
+[F#m]aleluya
+[G]alelu[A]-[D]ya[A]
+
+[D]Aleluya
+[F#m]aleluya
+[G]al-[D]el-[A]uya[D]

@@ -1,0 +1,18 @@
+TITULO: Salve Regina
+CATEGORIA: Marianos
+AUTOR: Padre Abel
+TONO: C
+OBSERVACIONES: La segunda estrofa se canta abajo
+MOMENTO: Salida / Mariana
+
+LETRA:
+[C]Salve, oh [F]Reina del [C]Cielo[G]
+[F]y Señora [Dm]de los [G]ángeles;
+[C]salve raíz, [C7]salve [F]puerta,[Fm]
+que dio [C]paso a nuestra [G]luz.[C][G]
+
+ABAJO
+[Am]Alégrate, oh [Dm]Virgen gloriosa,[C]
+entre todas la [F]más [Dm]bella;[G]
+[C]salve, agraciada [C7]doncella,[F][Fm]
+ruega a [C]Cristo por [G]nosotros.[C]
