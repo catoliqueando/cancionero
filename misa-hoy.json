@@ -1,31 +1,36 @@
 {
-  "titulo": "Cantos de la Santa Misa - Divino Niño",
-  "subtitulo": "6 de septiembre de 2026",
+  "titulo": "Cantos de la Santa Misa - Natividad de la Santísima Virgen María",
+  "subtitulo": "7 de septiembre de 2026",
   "cantos": [
     {
       "momento": "Entrada",
       "icono": "🎵",
-      "id": "divino-nino"
+      "id": "la-flor-de-dios"
     },
     {
       "momento": "Piedad",
       "icono": "🙏",
-      "id": "piedad-1"
+      "id": "ten-piedad-3"
     },
     {
       "momento": "Gloria",
       "icono": "☀️",
-      "id": "gloria-mejia"
+      "id": "gloria-palazon"
     },
     {
       "momento": "Ofertorio",
       "icono": "🍷​🍞​",
-      "id": "ofrenda-de-amor"
+      "id": "como-lo-hizo-maria"
+    },
+    {
+      "momento": "Ofertorio",
+      "icono": "🍷​🍞​",
+      "id": "tomad-senor-y-recibid"
     },
     {
       "momento": "Santo",
       "icono": "🕊️​",
-      "id": "santo-misa-de-las-americas"
+      "id": "santo-cristobal-fones"
     },
     {
       "momento": "Padre Nuestro",
@@ -35,22 +40,22 @@
     {
       "momento": "Cordero",
       "icono": "🐑",
-      "id": "cordero-don-bosco"
+      "id": "cordero-estilo-la-cosecha"
     },
     {
       "momento": "Comunión",
       "icono": "✝️",
-      "id": "bienvenido-nino-amado"
+      "id": "bendita-sea-tu-pureza"
     },
     {
       "momento": "Comunión",
       "icono": "✝️",
-      "id": "jesus-esta-vivo"
+      "id": "salve-regina"
     },
     {
       "momento": "Salida / Mariana",
       "icono": "🌹",
-      "id": "madre-buena"
+      "id": "himno-a-maria"
     }
   ]
 }
